@@ -1,0 +1,66 @@
+/**
+ * Black theme for reveal.js. This is the opposite of the 'white' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(./fonts/inter-var/web/inter.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #896B5E;
+
+$mainColor: #fff;
+$headingColor: #fff;
+
+$mainFontSize: 38px;
+$mainFont: InterVariable, Helvetica, sans-serif;
+$headingFont: InterVariable, Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: 0.07rem;
+$headingTextTransform: none;
+$headingFontWeight: 620;
+$linkColor: #42affa;
+$linkColor: lighten( $linkColor, 15% );
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: rgba( $linkColor, 0.75 );
+
+$heading1Size: 2.7em;
+$heading2Size: 1.7em;
+$heading3Size: 1.4em;
+$heading4Size: 1.0em;
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#222);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.reveal {
+    letter-spacing: $headingLetterSpacing;
+}
+
+.reveal p, .reveal ul, .reveal ol {
+    font-weight: 360;
+}
+
+
+.reveal ul {
+	list-style-type: disc;
+}
+
+.reveal ul ul {
+	list-style-type: '\25B8  ';
+    font-size: 0.9em;
+}

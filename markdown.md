@@ -1,77 +1,45 @@
 # Gramps Web
 
-### Open-Source-Genealogie im Netz
+### Der digitale Zwilling deiner Ahnen
 
 David Straub
 
-7. Dezember 2023
+11. Dezember 2023
 
-Ahnenforscher-Stammtisch Unna (Zoom)
+AK Open Source Software &ndash; Gesellschaft für Informatik
 
-
-
-
-Gramps Desktop <-> Gramps Web
-
-<div >
-<img style="vertical-align: middle;" width="45%" src="images/gramps-screenshot.png">
-<img style="vertical-align: middle;"  width="40%" src="images/grampsweb-screenshot.png">
-</div>
 
 
 
 ## Über mich
 
-- Aus Wendlingen am Neckar, jetzt München
-- Ahnenforschung als Hobby seit der Schulzeit
-- Gramps-Desktop-Nutzer seit ca. 15 Jahren
-- Python-Entwickler seit 8 Jahren
-- Erster Prototyp einer Gramps Web-App vor 4 Jahren
-- Beruf: Physiker, Data Scientist
+- Physiker/Data Scientist
+- aus Wendlingen am Neckar, jetzt München
+- Python-Entwicklung seit 8 Jahren
+- Nutzer der Open-Source-Software Gramps seit 15 Jahren
+- Initiator des Open-Source-Projekts Gramps Web
 
 
 
-## Plan
+## 🎄-Zeit ist Genealogie-Zeit!
 
-- Motivation
-- Kurzer Blick auf Gramps Desktop
-- Gramps Web: Idee, Aufbau
-- Ausführliche Tour durch Gramps Web
-- Installationsoptionen
-- Links
+- Nutze die Zeit, um deine Vorfahren zu befragen ✓
+- Tausche dich mit Verwandten aus ✓
+- Recherchiere in der Kiste mit Erinnerungen oder im Stadtarchiv ✓
+- Setze eine Gramps-Web-Instanz auf! ✓
 
 
 
-## Wozu ein Genealogie-System?
+## Gramps (Desktop)
 
-- Stammbdaum-Datenbank und -Visualisierung
-- Vollständig digitalisierte und verknüpfte Quellen und Medien
-- Vollständig digitale und verknüpfte Notizen
+<div >
+<img style="vertical-align: middle;" width="40%" src="images/gramps-screenshot.png">
+</div>
 
-
-## Die Daten im Genealogiesystem sind das Vermächtnis des Ahnenforschers!
-
-
-## Warum Open Source?
-
-- Unser Vermächtnis soll auf genealogischen Zeitskalen zugänglich bleiben -> offene Formate, offene Datenstrukturen
-- Unabhängigkeit von strategischen/wirtschaftlichen Entscheidungen einzelner Unternehmen (z.B. Causa FTM)
-
-
-
-## Gramps Desktop: Fakten
-
-- Seit 2004
-- Frei & Open Source (GPL)
-- Aktive internationale Entwicklergemeinde
-- In über 40 Sprachen übersetzt
-- Plattformübergreifend (Linux, Windows, Mac)
-- In Python programmiert
-- Offene Standards (XML, SQLite)
-- GEDCOM-Import/Export
-
-
-## Gramps Desktop: Demo
+- Open-Source-Desktop-Genealogie-Programm (GPL)
+- v1.0 in 2004, aktiv weiterentwickelt
+- Plattformübergreifend (GTK)
+- In Python
 
 
 
@@ -81,17 +49,42 @@ Gramps Desktop <-> Gramps Web
 - Zusammenarbeiten?
 - Unterwegs auf Handy oder Tablet arbeiten?
 
+<div >
+<img style="vertical-align: middle;" width="39%" src="images/gramps-screenshot.png">
+<->
+<img style="vertical-align: middle;" width="34.5%" src="images/grampsweb-screenshot.png">
+</div>
 
-## Gramps Web: Anforderungen
 
-- Vollständiger Zugang zu allen Daten im Genealogiesystem
-- Blogfunktion
-- Kompatibel & synchronisierbar mit Gramps Desktop
-- Einfacher Export
-- Nur für ausgewählte Benutzer zugänglich
-- Für manche Nutzer manche Daten unsichtbar machen
-- Gemeinsames Bearbeiten
-- Handy-/Tablet-freundlich
+
+## Gramps Web API
+
+- Gramps Datenstruktur: "Primäre Objekte" als JSON-Struktur darstellbar
+    - Person, Familie, Ereignis, Ort, Quelle, Fundstelle, Aufbewahrungsort, Notiz, Medienobjekt
+- Eine REST API mit `Flask` zum Lesen und Schreiben von Daten unter Verwendung der existierenden Gramps-Python-Bibliothek
+    - Datenbankmanagement (SQLite oder PostgreSQL)
+    - Genealogische Funktionen
+    - Berichterstellung uvm.
+
+[API-Dokumentation ->](https://gramps-project.github.io/gramps-webapi/)
+
+
+
+## Gramps.js
+
+- Frontend für die Web App
+- Javascript (Web Components &ndash; [`Lit`](https://lit.dev/))
+- Single Page App
+- Material Design
+- Autorisierung am Backend (Web API) mittels JSON Web Tokens (JWT)
+
+
+
+### + Gramps (Python)
+### + Gramps Web API (Python)
+### + Gramps.js (JS)
+### = Gramps&nbsp;Web
+
 
 
 ## Gramps Web: Architektur
@@ -99,32 +92,14 @@ Gramps Desktop <-> Gramps Web
 ![](images/Architektur.svg)
 
 
-## Was Gramps Web *nicht* ist
 
-- Keine eigene Datenquellen (Familysearch, Ancestry, MyHeritage, ...)
-- Kein Abgleich mit Datenbanken anderer Nutzer
-- Keine öffentliche Genealogie-Webseite (siehe Gramps-Addons)
-
-
-## Gramps Web: Demo
-
-
-
-## Sicherheit und Datenschutz
-
-- Zugang ohne Account grundsätzlich nicht vorgesehen
-- Abgestufte Berechtigungen
-    - bearbeiten, hinzufügen, betrachten, betrachten außer "vertraulich markiert"
-- Berechtigungen werden von Gramps auf Datenbank-Zugriffs-Ebene erzwungen
-    - stark reduzierte Wahrscheinlichkeit von Datenlecks durch Bugs
-
+## Gramps Web &ndash; Demo
 
 
 
 ## Installation
 
-- Architektur erlaubt Features, die man sonst nur vom Desktop kennt (PDF-Berichte, Gesichtsdetektion, Texterkennung)
-    - höhere Installationsanforderungen (als z.B. Webtrees)
+- Einfachste Deployment-Methode via Docker Compose
 - Drei Optionen:
     - Eigener Server (Raspberry Pi, virtueller Server o.ä.)
     - Docker-Hosting (z.B. Gramps Web DigitalOcean-App)
@@ -136,9 +111,10 @@ Gramps Desktop <-> Gramps Web
 
 - Hosting-Dienst für Gramps Web
 - Seit Mitte 2023 von mir betrieben
-- Abo-Modell (aber keine Abo-Falle)
 
-![](images/grampshub-abos.png)
+<img width="80%" src="images/grampshub-abos.png">
+
+Kein Provider-Lock-In &ndash; Daten können jederzeit exportiert/migriert werden
 
 
 ## Grampshub: Vorteile
@@ -161,19 +137,27 @@ Und wie überall bei Gramps Web: kein Provider-Lock-In &ndash; Vollständiger Ex
 
 
 
-## Mehr Info
+## Mitentwickler*innen herzlich willkommen
+
+- Python: [github.com/gramps-project/gramps-webapi](https://github.com/gramps-project/gramps-webapi)
+- Javascript: [github.com/gramps-project/Gramps.js](https://github.com/gramps-project/Gramps.js)
+- Python-GTK: [github.com/DavidMStraub/gramps-web-sync](https://github.com/DavidMStraub/gramps-web-sync)
+
+
+
+## Mehr Details
+
+Einstündiger Vortrag über Gramps Web beim Ahnenforscher-Stammtisch Unna letzte Woche:
+
+https://youtu.be/Y0NS-LeL-6Q
+
+
+## Links
 
 - Gramps Web Docs: https://www.grampsweb.org
-    - Deutsch [via Google Translate](https://translate.google.com)
 - Grampshub: https://www.grampshub.com
 - Mein Blog: https://www.grampshub.com/blog
 - Instagram: https://www.instagram.com/grampshub/
-
-
-## Hilfe finden
-
-- Compgen-Liste `gramps-l` (deutsch): https://discourse.genealogy.net/c/gramps-l/
-- Gramps-Forum (englisch): https://gramps.discourse.group/c/gramps-web/
-- Fehler melden:
-    - Unterbau/Verarbeitung: https://github.com/gramps-project/gramps-webapi/issues
-    - Benutzeroberfläche/Darstellung: https://github.com/gramps-project/Gramps.js/issues
+- Foren
+    - Compgen-Liste `gramps-l` (deutsch): https://discourse.genealogy.net/c/gramps-l/
+    - Gramps-Forum (englisch): https://gramps.discourse.group/c/gramps-web/
